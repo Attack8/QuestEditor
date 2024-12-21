@@ -1,0 +1,1 @@
+<!DOCTYPE html><?php header('Location:0.1/');

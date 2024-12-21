@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>QuestLine Editor</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css"
+    />
+    <script src="https://accounts.google.com/gsi/client" async></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+  </head>
+  <body>
+    <header>
+        
+    </header>
+    
+    <body>
+      
+      <label for="text">Copy + Paste quests.json here</label>
+      <textarea id="text"></textarea>
+      <button id="test">Submit</button>
+      
+
+      <div id="quest_list"></div>
+      <div id="quest_details"></div>
+    </body>
+
+    <footer>
+        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/">
+            <a property="dct:title" rel="cc:attributionURL" href="https://github.com/Attack8/eightclasses">QuestLine</a> by 
+            <a rel="cc:attributionURL dct:creator" property="cc:attributionName" href="https://github.com/Attack8">attackeight</a> is licensed under 
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">
+                CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
+                src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="">
+                <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
+                src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="">
+                <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
+                src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt="">
+                <img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" 
+                src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
+    </footer>
+    <script>
+      function render() {
+        var text = $('#text')[0].value;
+        // console.log($('#text')[0].value);
+        var jsonText = JSON.parse(text);
+        console.log(jsonText);
+        console.log($("#test"));
+        jsonText["quests"].forEach(element => {
+          const div = document.createElement("div");
+          const button = document.createElement("button");
+          button.innerHTML = element.name;
+          document.getElementById("quest_list").appendChild(div).appendChild(button);
+        });
+      }
+      $('#text').on('change', render)
+    </script>
+  </body>
+</html>
